@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;500;600;700;800;900;950&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900;950&display=swap');
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+html,
+body,
+main {
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  padding: 20px;
+}
+
+.map-box {
+  background-color: var(--mui-palette-background-paper);
+  border-radius: 4px;
+}
+
+.highlighted-node {
+  fill: cyan !important;
+  stroke: cyan !important;
+  stroke-width: 3px !important;
+}
+
+.highlighted-edge {
+  stroke: cyan !important;
+  stroke-width: 2.5px !important;
+}
