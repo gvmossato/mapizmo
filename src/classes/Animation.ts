@@ -9,8 +9,8 @@ interface AnimationOptions {
 }
 
 const NODE_RADIUS = 2;
-const NODE_ANIMATION_SPEED = 250;
-const EDGE_ANIMATION_SPEED = 250;
+const NODE_ANIMATION_SPEED = 0.01; // Adjusted speed to create smoother animation
+const EDGE_ANIMATION_SPEED = 0.5; // Adjusted speed to create smoother animation
 
 export class Animation {
   private svg: d3.Selection<SVGSVGElement, unknown, null, undefined>;
@@ -33,9 +33,9 @@ export class Animation {
   }
 
   private animateFloorPathHighlight(floorId: string, pathNodes: (Attributes & RouteNode)[]) {
-    const pathSvgGroup = this.svg.select(`#${floorId}`).append('g').attr('id', 'path'); // maybe .enter()
-    let offset = 0;
+    const pathSvgGroup = this.svg.select(`#${floorId}`).append('g').attr('id', 'path');
     const nodeAnimationDuration = NODE_RADIUS / NODE_ANIMATION_SPEED;
+    let offset = 0;
 
     for (const [index, node] of pathNodes.entries()) {
       if (this.isPathStart(index)) {
@@ -102,12 +102,15 @@ export class Animation {
       .attr('id', `${sourceNode.id}-${targetNode.id}`)
       .attr('x1', sourceNode.point.x)
       .attr('y1', sourceNode.point.y)
+      .attr('x2', sourceNode.point.x) // Start the line at the source node position
+      .attr('y2', sourceNode.point.y) // Start the line at the source node position
       .attr('class', 'highlighted-edge')
       .transition()
       .duration(duration)
       .delay(delay)
-      .attr('x2', targetNode.point.x)
-      .attr('y2', targetNode.point.y);
+      .ease(d3.easeLinear) // Set the transition to linear
+      .attr('x2', targetNode.point.x) // Animate the line to the target node position
+      .attr('y2', targetNode.point.y); // Animate the line to the target node position
   }
 
   public removePathHighlight() {

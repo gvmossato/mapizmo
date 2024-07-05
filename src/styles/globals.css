@@ -28,12 +28,12 @@ main {
 }
 
 .highlighted-node {
-  fill: cyan !important;
-  stroke: cyan !important;
-  stroke-width: 3px !important;
+  fill: red !important;
+  stroke: red !important;
+  stroke-width: 0.5px !important;
 }
 
 .highlighted-edge {
-  stroke: cyan !important;
-  stroke-width: 2.5px !important;
+  stroke: red !important;
+  stroke-width: 1.5px !important;
 }
