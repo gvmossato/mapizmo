@@ -2,7 +2,6 @@
 
 import { Animation } from '@/classes/Animation';
 import { BuildingMap, RouteNode } from '@/classes/BuildingMap';
-import Grid from '@mui/material/Unstable_Grid2';
 import * as d3 from 'd3';
 import { useEffect, useRef, useState } from 'react';
 
@@ -122,9 +121,5 @@ export default function Map({
     setFloorVisibility(currentFloor);
   }, [currentFloor]); // React to changes in currentFloor
 
-  return (
-    <Grid container>
-      <svg ref={svgReference} className='map-box' width='80vw' height='85vh' />
-    </Grid>
-  );
+  return <svg ref={svgReference} id='map-area' width='100%' height='100%' />;
 }

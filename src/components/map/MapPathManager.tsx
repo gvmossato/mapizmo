@@ -28,19 +28,24 @@ export default function MapPathManager() {
   }, [buildingMap, path]);
 
   return (
-    <Grid container>
-      <Grid>
-        {isBuildingMapLoaded(buildingMap) ? (
-          <PathSelector buildingMap={buildingMap} pathSetter={setPath} />
-        ) : (
-          <Skeleton width={800} height={100} />
-        )}
-      </Grid>
+    <Grid container rowGap={2} flexDirection={'column'} height={'100%'} id='map-path-manager'>
+      {isBuildingMapLoaded(buildingMap) ? (
+        <PathSelector buildingMap={buildingMap} pathSetter={setPath} />
+      ) : (
+        <Skeleton width={800} height={100} />
+      )}
 
-      <FloorToggler floorIds={buildingMap?.floorIds ?? []} floorSetter={setCurrentFloor} />
-
-      <Grid>
-        <Map buildingMapSetter={setBuildingMap} pathNodes={pathNodes} currentFloor={currentFloor} />
+      <Grid container xs={12} spacing={2} flex={1}>
+        <Grid flex={1}>
+          <Map
+            buildingMapSetter={setBuildingMap}
+            pathNodes={pathNodes}
+            currentFloor={currentFloor}
+          />
+        </Grid>
+        <Grid>
+          <FloorToggler floorIds={buildingMap?.floorIds ?? []} floorSetter={setCurrentFloor} />
+        </Grid>
       </Grid>
     </Grid>
   );

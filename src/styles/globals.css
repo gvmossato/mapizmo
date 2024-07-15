@@ -16,13 +16,17 @@ body,
 main {
   display: flex;
   justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 main {
   padding: 20px;
 }
 
-.map-box {
+#map-area {
+  display: flex;
+  flex-grow: 1;
   background-color: var(--mui-palette-background-paper);
   border-radius: 4px;
 }

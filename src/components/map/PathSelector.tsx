@@ -55,10 +55,10 @@ export default function PathSelector({ buildingMap, pathSetter: setPath }: PathS
   ));
 
   return (
-    <Grid container>
+    <Grid container spacing={2} id='path-selector'>
       {selectors.map(({ label, id, value, setter }) => (
-        <Grid item key={id}>
-          <FormControl>
+        <Grid item key={id} xs={6} id={'path-selector-' + id}>
+          <FormControl fullWidth>
             <InputLabel id={id + '-select-label'}>{label}</InputLabel>
             <Select
               labelId={id + '-select-label'}
